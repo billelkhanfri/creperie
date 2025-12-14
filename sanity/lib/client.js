@@ -8,4 +8,3 @@ export const client = createClient({
   useCdn: false, // true = lecture rapide mais données pas toujours à jour
   token: process.env.SANITY_API_TOKEN, // seulement côté serveur
 });
-
