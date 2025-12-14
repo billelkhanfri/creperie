@@ -4,6 +4,7 @@ import History from "./components/History";
 import Missions from "./components/Missions";
 import Actions from "./components/Actions";
 import Benevole from "./components/Benevole";
+
 export default async function Home() {
 
 
