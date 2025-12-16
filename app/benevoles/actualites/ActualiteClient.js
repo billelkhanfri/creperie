@@ -7,8 +7,8 @@ export default function ActualitesClient() {
   const [actualites, setActualites] = useState([]);
 
   useEffect(() => {
-    import("@/app/lib/supabase").then(({ getSupabase }) => {
-      const supabase = getSupabase();
+    import("@/lib/supabase/server").then(({ createSupabaseServer }) => {
+      const supabase = createSupabaseServer();
       supabase
         .from("actualites")
         .select("*")

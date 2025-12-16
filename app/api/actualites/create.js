@@ -1,8 +1,9 @@
-import { getSupabase } from "@/app/lib/supabase";
 import { NextResponse } from "next/server";
+import { createSupabaseServer } from "@/lib/supabase/server";
 
 export async function POST(req) {
-  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
+  const supabase = createSupabaseServer(); // ✅ serveur only
+
   try {
     const body = await req.json();
     const { slug, title, category, date, image, content } = body;
@@ -19,22 +20,30 @@ export async function POST(req) {
       return NextResponse.json({ error: "date invalide" }, { status: 400 });
     }
 
-    const { data, error } = await supabase.from("actualites").insert([
-      {
-        slug,
-        title,
-        category,
-        date: insertDate.toISOString().split("T")[0],
-        image: image || null,
-        content,
-      },
-    ]);
+    const { data, error } = await supabase
+      .from("actualites")
+      .insert([
+        {
+          slug,
+          title,
+          category,
+          date: insertDate.toISOString().split("T")[0],
+          image: image || null,
+          content,
+        },
+      ])
+      .select()
+      .single();
 
-    if (error)
+    if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
+    }
 
-    return NextResponse.json(data[0]);
+    return NextResponse.json(data, { status: 201 });
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json(
+      { error: err.message || "Erreur serveur" },
+      { status: 500 }
+    );
   }
 }

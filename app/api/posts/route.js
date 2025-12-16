@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { getSupabase } from "@/app/lib/supabase";
+import { createSupabaseServer } from "@/lib/supabase/server";
 
 export async function GET(req) {
-  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
+  const supabase = createSupabaseServer(); // ✅ serveur only
 
   const { searchParams } = new URL(req.url);
   const slug = searchParams.get("slug");

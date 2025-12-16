@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { getSupabase } from "@/app/lib/supabase";
+import { createSupabaseServer } from "@/lib/supabase/server";
 
 export async function GET(req, context) {
-  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
+  const supabase = createSupabaseServer(); // ✅ serveur only
 
   // 🔥 params est une Promise dans ta version de Next
   const { slug } = await context.params;

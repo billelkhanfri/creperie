@@ -1,9 +1,9 @@
 // app/api/posts/create.js
-import { getSupabase } from "@/app/lib/supabase";
+import { createSupabaseServer } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
+  const supabase = createSupabaseServer(); // ✅ serveur only
 
   try {
     const body = await req.json();
