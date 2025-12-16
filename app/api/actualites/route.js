@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getSupabase } from "@/app/lib/supabase";
 
 export async function GET(req) {
-  const supabase = getSupabase(); // 👈 instanciation EXPLICITE ici
+  const supabase = getSupabase();
 
   const { searchParams } = new URL(req.url);
   const category = searchParams.get("category");
@@ -19,4 +19,8 @@ export async function GET(req) {
   const { data, error } = await query;
 
   if (error) {
-    return Nex
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json(data);
+}
