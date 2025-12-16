@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { getSupabase } from "../../../lib/supabase";
+import { createSupabaseServer } from "@/app/lib/supabase/server";
 import { useRouter } from "next/navigation";
 
 export default function NewPost() {
-  const supabase = getSupabase();
+  const supabase = createSupabaseServer();
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
