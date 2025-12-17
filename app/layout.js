@@ -4,7 +4,8 @@ import Footer from "./components/Footer.js";
 
 export const metadata = {
   title: "CAAA — coeur de ville - Toulon",
-  description: "Crêpes maison, produits locaux et ambiance moderne.",
+  description:
+    "l'alphabétisation, l'apprentissage du Français Langue Etrangère et l'accompagnement à la scolarité des enfants",
 };
 
 export default function RootLayout({ children }) {
