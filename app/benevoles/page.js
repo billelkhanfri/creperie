@@ -1,6 +1,6 @@
 "use client";
 
-import BenevolesDashboardLayout from "@/app/components/BenevolesDashboardLayout";
+import BenevolesDashboardLayout from "../components/BenevolesDashboardLayout";
 
 export default function BenevolesHomePage() {
   return (

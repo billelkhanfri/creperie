@@ -1,4 +1,4 @@
-import { createServerClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
 export function createSupabaseServer() {
@@ -9,17 +9,22 @@ export function createSupabaseServer() {
     throw new Error("Supabase env variables missing");
   }
 
+  // cookies() fonctionne uniquement côté serveur
   const cookieStore = cookies();
 
-  return createServerClient(supabaseUrl, supabaseAnonKey, {
+  return createClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
       getAll() {
-        return cookieStore.getAll();
+        return cookieStore.getAll().map((c) => ({
+          name: c.name,
+          value: c.value,
+          options: {}, // Next.js cookies() ne fournit pas directement options
+        }));
       },
       setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) =>
-          cookieStore.set(name, value, options)
-        );
+        cookiesToSet.forEach(({ name, value, options }) => {
+          cookieStore.set(name, value, options || {});
+        });
       },
     },
   });

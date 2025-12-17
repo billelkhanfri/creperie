@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { createSupabaseServer } from "@/app/lib/supabase/server";
+import { supabaseClient } from "../lib/supabase/client";
 import Link from "next/link";
 
 export default function BenevolesDashboardLayout({ children }) {
-  const supabase = createSupabaseServer();
+  const supabase = supabaseClient;
   const router = useRouter();
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);

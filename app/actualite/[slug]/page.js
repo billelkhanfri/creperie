@@ -44,7 +44,7 @@ export default async function ActualitePage({ params }) {
             Accueil
           </Link>
           {" / "}
-          <Link href="/actualites" className="hover:underline">
+          <Link href="/blog" className="hover:underline">
             Actualités
           </Link>
           {" / "}

@@ -4,10 +4,10 @@ export const dynamic = "force-dynamic";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createSupabaseServer } from "@/app/lib/supabase/server";
+import { supabaseClient } from "../../lib/supabase/client";
 
 export default function BenevolesLogin() {
-  const supabase = createSupabaseServer(); // ✅ serveur only
+  const supabase = supabaseClient;
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

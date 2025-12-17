@@ -1,21 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import BenevolesDashboardLayout from "@/app/components/BenevolesDashboardLayout";
+import BenevolesDashboardLayout from "../../components/BenevolesDashboardLayout";
+import { supabaseClient } from "../../lib/supabase/client";
 
 export default function ActualitesClient() {
   const [actualites, setActualites] = useState([]);
 
   useEffect(() => {
-    import("@app/lib/supabase/server.js").then(({ createSupabaseServer }) => {
-      const supabase = createSupabaseServer();
-      supabase
-        .from("actualites")
-        .select("*")
-        .order("created_at", { ascending: false })
-        .then(({ data }) => setActualites(data));
-    });
-  }, []);
+  const supabase = supabaseClient;}
+);
 
   return (
     <BenevolesDashboardLayout>
