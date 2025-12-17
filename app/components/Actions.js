@@ -1,7 +1,11 @@
-import React from "react";
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
-function Actions() {
+export default function Actions() {
+  const [flippedIndex, setFlippedIndex] = useState(null);
+
   const actions = [
     {
       title: "Pour les adultes",
@@ -24,12 +28,9 @@ function Actions() {
     <section className="py-16 px-6 lg:px-32 bg-gray-100">
       <h2 className="text-4xl font-bold text-center mb-16">Nos Actions</h2>
 
-      <div
-        className="grid gap-12 max-w-6xl mx-auto 
-                md:grid-cols-[4fr_auto_4fr] items-center"
-      >
+      <div className="grid gap-12 max-w-6xl mx-auto md:grid-cols-[4fr_auto_4fr] items-center">
         {actions.map((action, index) => {
-          /* 👉 CAS IMAGE SIMPLE */
+          /* IMAGE CENTRALE */
           if (index === 1) {
             return (
               <div
@@ -47,13 +48,22 @@ function Actions() {
             );
           }
 
-          /* 👉 CAS FLIP CARD */
+          /* FLIP CARD */
+          const isFlipped = flippedIndex === index;
+
           return (
             <div
               key={index}
               className="perspective w-full max-w-sm md:max-w-md mx-auto aspect-[4/3]"
             >
-              <div className="relative h-full transition-transform duration-700 preserve-3d hover:rotate-y-180">
+              <div
+                className="relative h-full transition-transform duration-700 preserve-3d
+                           md:hover:rotate-y-180 cursor-pointer"
+                onClick={() => setFlippedIndex(isFlipped ? null : index)}
+                style={{
+                  transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
+                }}
+              >
                 {/* FACE AVANT */}
                 <div className="absolute inset-0 backface-hidden">
                   <div className="card image-full h-full rounded-3xl shadow-sm">
@@ -66,9 +76,12 @@ function Actions() {
                       />
                     </figure>
                     <div className="card-body flex items-center justify-center text-center">
-                      <h2 className="text-2xl md:text-4xl font-bold">
+                      <h3 className="text-2xl md:text-4xl font-bold">
                         {action.title}
-                      </h2>
+                      </h3>
+                      <p className="text-sm opacity-70 md:hidden mt-2">
+                        Appuyez pour découvrir
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -81,6 +94,9 @@ function Actions() {
                     <div className="text-center space-y-4">
                       <h3 className="text-xl font-bold">{action.title}</h3>
                       <p>{action.text}</p>
+                      <p className="text-sm opacity-70 md:hidden">
+                        Appuyez pour revenir
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -92,5 +108,3 @@ function Actions() {
     </section>
   );
 }
-
-export default Actions;

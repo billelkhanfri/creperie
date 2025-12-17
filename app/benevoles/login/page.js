@@ -33,12 +33,23 @@ export default function BenevolesLogin() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="h-[60vh] flex items-center justify-center bg-gray-100 px-4">
       <form
         onSubmit={handleLogin}
-        className="bg-white p-8 rounded shadow-md w-full max-w-md space-y-4"
+        className="
+          w-full
+          max-w-sm
+          md:max-w-md
+          bg-white
+          p-6
+          md:p-10
+          rounded-2xl
+          shadow
+          md:shadow-lg
+          space-y-6
+        "
       >
-        <h1 className="text-2xl font-bold text-center mb-4">
+        <h1 className="text-2xl md:text-3xl font-bold text-center">
           Connexion Bénévole
         </h1>
 
@@ -60,7 +71,7 @@ export default function BenevolesLogin() {
           required
         />
 
-        <button type="submit" className="btn btn-primary w-full">
+        <button type="submit" className="btn btn-primary w-full text-base">
           Se connecter
         </button>
       </form>
