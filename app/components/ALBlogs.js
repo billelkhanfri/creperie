@@ -27,10 +27,10 @@ export default function BlogList({ posts }) {
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {displayedPosts.map((post) => (
           <div key={post.slug} className="card bg-base-100 shadow-xl">
-            {/* <figure className="relative h-56">
+             <figure className="relative h-56">
               <Image
                 src={
-                  post.mainImage.url
+                  post.main_image.url
                   
                    
                 }
@@ -39,7 +39,7 @@ export default function BlogList({ posts }) {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover"
               />
-            </figure> */}
+            </figure> 
 
             <div className="card-body">
               <h2 className="card-title">{post.title}</h2>

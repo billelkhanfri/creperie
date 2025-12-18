@@ -63,28 +63,27 @@ export default function BenevolesDashboardLayout({ children }) {
         <button
           onClick={async () => {
             await supabase.auth.signOut();
-            router.push("/admin/login");
+            router.push("/login");
           }}
           className="m-4 bg-accent hover:bg-red-600 p-2 rounded"
         >
           Déconnexion
         </button>
       </aside>
-
-     
-      
     </>
   );
 }
 
-
-
-
-    <aside className="w-64 bg-base-100 shadow">
-      <ul className="menu p-4">
-        <li><Link href="/admin">Dashboard</Link></li>
-        <li><Link href="/admin/posts">Posts</Link></li>
-        <li><Link href="/admin/actualites">Actualités</Link></li>
-      </ul>
-    </aside>
-
+<aside className="w-64 bg-base-100 shadow">
+  <ul className="menu p-4">
+    <li>
+      <Link href="/admin">Dashboard</Link>
+    </li>
+    <li>
+      <Link href="/admin/posts">Posts</Link>
+    </li>
+    <li>
+      <Link href="/admin/actualites">Actualités</Link>
+    </li>
+  </ul>
+</aside>;

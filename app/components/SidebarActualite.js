@@ -1,9 +1,6 @@
-// components/SidebarActualite.tsx
-
 import Link from "next/link";
 
 export default function SidebarActualite({ actualites }) {
-  
   return (
     <div className="card bg-base-200 shadow-md sticky top-24">
       <div className="card-body p-5">
@@ -15,17 +12,30 @@ export default function SidebarActualite({ actualites }) {
             <li key={actu.slug}>
               <Link
                 href={`/actualite/${actu.slug}`}
-                className="block hover:bg-base-100 rounded-lg p-3 transition"
+                className="block rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-200 bg-base-100"
               >
-                <span className="badge badge-outline badge-primary mb-2">
-                  {actu.category}
-                </span>
+                {/* IMAGE */}
+                {actu.image?.url && (
+                  <div className="relative w-full h-32">
+                    <img
+                      src={actu.image.url}
+                      alt={actu.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* BADGE CATÉGORIE SUR IMAGE */}
+                    <span className="absolute top-2 left-2 badge badge-sm badge-primary">
+                      {actu.category}
+                    </span>
+                  </div>
+                )}
 
-                <p className="font-medium leading-snug line-clamp-2">
-                  {actu.title}
-                </p>
-
-                <p className="text-sm text-gray-500 mt-1">{actu.date}</p>
+                {/* CONTENU TEXTE */}
+                <div className="p-3">
+                  <p className="font-medium leading-snug line-clamp-2">
+                    {actu.title}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-1">{actu.date}</p>
+                </div>
               </Link>
             </li>
           ))}

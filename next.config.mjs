@@ -3,18 +3,18 @@ const nextConfig = {
   reactCompiler: true,
   reactStrictMode: true,
   images: {
+    domains: ["static.wixstatic.com"],
+
     remotePatterns: [
       {
         protocol: "https",
         hostname: "imgs.search.brave.com",
-        port: "",
         pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "via.placeholder.com",
-        port: "",
-        pathname: "/**", // <-- obligatoire
+        pathname: "/**",
       },
     ],
   },
