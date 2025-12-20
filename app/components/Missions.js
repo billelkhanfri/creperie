@@ -60,7 +60,7 @@ export default function Missions() {
 
       {/* ⭐ Responsive container */}
       <div className="container mx-auto px-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
           {missions.map((m) => (
             <MissionCard key={m.title} {...m} />
           ))}

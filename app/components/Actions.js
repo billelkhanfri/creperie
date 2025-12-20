@@ -42,7 +42,7 @@ export default function Actions() {
                   alt="Illustration"
                   width={120}
                   height={100}
-                  className="rounded-3xl object-contain"
+                  className="rounded-3xl object-cover"
                 />
               </div>
             );

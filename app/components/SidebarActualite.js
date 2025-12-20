@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function SidebarActualite({ actualites }) {
   return (
-    <div className="card bg-base-200 shadow-md sticky top-24">
+    <div className="card bg-base-200 shadow-md sticky ">
       <div className="card-body p-5">
         <h3 className="text-xl font-bold">Actualités</h3>
         <div className="divider my-2" />

@@ -1,39 +1,44 @@
 "use client";
 
 import { useState } from "react";
-import BenevolesDashboardLayout from "../components/BenevolesDashboardLayout";
-import { CgClose } from "react-icons/cg";
+import { usePathname } from "next/navigation";
+import Sidebar from "./SidebarActualite";
 import { IoChevronForward } from "react-icons/io5";
+import { CgClose } from "react-icons/cg";
 
-export default function AdminLayout({ children, showDashboard = true }) {
+export default function LayoutClient({ children, actualites }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const hideSidebarPaths = ["/admin"];
+  const showSidebar = !hideSidebarPaths.includes(pathname);
 
   return (
     <>
       {/* Bouton menu MOBILE */}
-      {showDashboard && (
+      {showSidebar && (
         <button
           onClick={() => setOpen(true)}
           className="lg:hidden fixed top-20 left-0 z-50 bg-primary text-white p-3 rounded-r-xl shadow-lg"
         >
-          <IoChevronForward size={22} />
+          <IoChevronForward  size={22}/>
         </button>
       )}
 
-      <div className="flex min-h-screen">
+      <main className="flex flex-1 w-full max-w-7xl mx-auto">
         {/* SIDEBAR DESKTOP */}
-        {showDashboard && (
-          <aside className="hidden lg:block w-64">
-            <BenevolesDashboardLayout />
+        {showSidebar && (
+          <aside className="hidden lg:block w-64 border-r border-gray-200">
+            <Sidebar actualites={actualites} />
           </aside>
         )}
 
         {/* CONTENU */}
-        <main className="flex-1 p-2 bg-base-200">{children}</main>
-      </div>
+        <section className="flex-1 p-4">{children}</section>
+      </main>
 
-      {/* SIDEBAR MOBILE */}
-      {showDashboard && (
+      {/* SIDEBAR MOBILE (DRAWER) */}
+      {showSidebar && (
         <>
           {/* Overlay */}
           <div
@@ -45,17 +50,16 @@ export default function AdminLayout({ children, showDashboard = true }) {
 
           {/* Drawer */}
           <aside
-            className={`fixed top-0 left-0 h-full w-64 bg-base-100 z-50 transform transition-transform duration-300
+            className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transform transition-transform duration-300
             ${open ? "translate-x-0" : "-translate-x-full"}`}
           >
-            <div className="flex items-center justify-between p-4 border-b">
-              <span className="font-semibold">Tableau de bord</span>
+            <div className="  p-4 border-b">
               <button onClick={() => setOpen(false)}>
                 <CgClose size={20} />
               </button>
             </div>
 
-            <BenevolesDashboardLayout />
+            <Sidebar actualites={actualites} />
           </aside>
         </>
       )}

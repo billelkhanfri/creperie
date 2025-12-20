@@ -38,9 +38,9 @@ export default function PartenairesPage() {
                 <Image
                   src={partenaire.logo}
                   alt={partenaire.name}
-                  width={180}
+                  width={100}
                   height={100}
-                  className="object-contain grayscale hover:grayscale-0 transition"
+                  className="object-cocer grayscale hover:grayscale-0 transition"
                 />
               </div>
             </div>

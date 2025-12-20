@@ -25,9 +25,7 @@ export default function BenevolesDashboardLayout({ children }) {
   return (
     <>
       <aside className="w-64 bg-secondary text-white">
-        <div className="p-6 text-2xl font-bold border-b border-gray-700">
-          Dashboard
-        </div>
+      
 
         <nav className="p-4 flex flex-col gap-2">
           <Link
