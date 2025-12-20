@@ -35,10 +35,10 @@ export default function ActualiteForm({ initialData = {}, action }) {
         }
       />
 
-      {/* ✅ File input instead of URL */}
+      {/* FILE input pour image ou vidéo */}
       <input
         type="file"
-        name="image"
+        name="media"
         accept="image/*,video/*"
         className="file-input file-input-bordered w-full"
       />
