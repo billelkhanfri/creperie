@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { HeartHandshake } from "lucide-react";
 import { useEffect, useState } from "react";
+import { RiHome8Line } from "react-icons/ri";
+import { CiMenuKebab } from "react-icons/ci";
 
 import { supabaseClient } from "../lib/supabase/client";
-
-
 
 export default function Navbar() {
   const supabase = supabaseClient;
@@ -36,24 +36,12 @@ export default function Navbar() {
   return (
     <header className="navbar bg-base-100 shadow-sm px-4">
       {/* LEFT : Logo + Menu Mobile */}
-      <div className="navbar-start">
+      <div className="navbar-start gap-4">
         {/* Mobile dropdown */}
         <div className="dropdown lg:hidden">
           <button tabIndex={0} className="btn btn-ghost">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+           
+            <CiMenuKebab size={30} className="text-[#0432F4]"/>
           </button>
 
           <ul

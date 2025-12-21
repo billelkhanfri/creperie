@@ -10,7 +10,7 @@ export default function LayoutClient({ children, actualites }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const hideSidebarPaths = ["/admin"];
+const hideSidebarPaths = ["/admin", "/login"];
   const showSidebar = !hideSidebarPaths.includes(pathname);
 
   return (
@@ -19,9 +19,9 @@ export default function LayoutClient({ children, actualites }) {
       {showSidebar && (
         <button
           onClick={() => setOpen(true)}
-          className="lg:hidden fixed top-20 left-0 z-50 bg-primary text-white p-3 rounded-r-xl shadow-lg"
+          className="lg:hidden fixed top-20 left-0 z-50 bg-warning text-primary p-3 rounded-r-xl shadow-lg"
         >
-          <IoChevronForward  size={22}/>
+          <IoChevronForward  size={22} />
         </button>
       )}
 
