@@ -2,7 +2,7 @@
 "use client";
 import { supabaseClient } from "../lib/supabase/client";
 import { useEffect, useState } from "react";
-
+import ResetPassword from "../components/ResetPassword"
 export default  function BenevolesHomePage() {
 
    const supabase = supabaseClient();
@@ -49,7 +49,7 @@ if (loading) return <p className="p-8">Chargement...</p>;
       <h1 className="text-3xl font-bold mb-4">
         Bienvenue <span className="text-primary">{userName || "Utilisateur"} 👋 </span>
       </h1>
-
+<ResetPassword/>
       <p className="mb-6">
         Vous êtes connecté à l’espace admin. Utilisez le menu à gauche pour
         gérer les contenus.
