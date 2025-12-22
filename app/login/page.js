@@ -11,6 +11,7 @@ export default function BenevolesLogin() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // ← état pour le message d'erreur
 
   if (!supabase) {
     return <div>Configuration Supabase manquante</div>;
@@ -19,16 +20,27 @@ export default function BenevolesLogin() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const { error,data } = await supabase.auth.signInWithPassword({
+    const { error, data } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) {
-      alert(error.message);
+      // Traduction simple des erreurs les plus courantes
+      if (error.message.includes("Invalid login credentials")) {
+        setErrorMessage("Email ou mot de passe incorrect");
+      } else if (error.message.includes("email")) {
+        setErrorMessage("Email invalide");
+      } else if (error.message.includes("password")) {
+        setErrorMessage("Mot de passe invalide");
+      } else {
+        setErrorMessage(error.message); // sinon, affiche le message brut
+      }
       return;
     }
 
+    // Si connexion réussie
+    setErrorMessage("");
     router.push("/admin");
   };
 
@@ -46,7 +58,7 @@ export default function BenevolesLogin() {
           rounded-2xl
           shadow
           md:shadow-lg
-          space-y-6
+          space-y-4
         "
       >
         <h1 className="text-xl font-bold text-center">Admin CAAA</h1>
@@ -68,6 +80,10 @@ export default function BenevolesLogin() {
           className="input input-bordered w-full"
           required
         />
+
+        {errorMessage && (
+          <p className="text-red-500 text-sm text-center">{errorMessage}</p>
+        )}
 
         <button type="submit" className="btn btn-primary w-full text-base">
           Se connecter
