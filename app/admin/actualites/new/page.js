@@ -6,8 +6,16 @@ export default function NewActualitePage() {
   async function createActualite(formData) {
     "use server";
 
-    const supabase = createSupabaseServer();
 
+    const supabase = await createSupabaseServer();
+const {
+  data: { user },
+  error: userError,
+} = await supabase.auth.getUser();
+
+if (!user) {
+  throw new Error("Non autorisé");
+}
     const title = formData.get("title");
     const file = formData.get("image"); // fichier image
     

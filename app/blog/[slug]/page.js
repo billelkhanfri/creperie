@@ -1,25 +1,22 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { createSupabaseServer } from "../../lib/supabase/server";
 
 export default async function PostPage({ params }) {
   const { slug } = await params;
-
+console.log("slug", slug)
   if (!slug) notFound();
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/posts/${slug}`,
-    { cache: "no-store" }
-  );
-console.log("res", res)
-  if (!res.ok) {
-    if (res.status === 404) notFound();
-    throw new Error("Erreur lors du chargement du post");
-  }
+  const supabase = await createSupabaseServer();
 
-  const post = await res.json();
-  console.log(post, "post")
-  if (!post) notFound();
+  const { data: post, error } = await supabase
+    .from("posts")
+    .select("*")
+    .eq("slug", slug.toLowerCase())
+    .single();
+console.log(post)
+  if (error || !post) notFound();
 
   const isVideo = (url = "") => /\.(mp4|webm|ogg)$/i.test(url);
 

@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 export default async function EditActualitePage({ params }) {
   const { slug } = await params;
 
-  const supabase = createSupabaseServer();
+  const supabase = await createSupabaseServer();
 
   // 🔹 Récupération de l'actualité
   const { data: actualite, error } = await supabase
@@ -21,7 +21,7 @@ export default async function EditActualitePage({ params }) {
   async function updateActualite(formData) {
     "use server";
 
-    const supabase = createSupabaseServer();
+    const supabase =await createSupabaseServer();
 
     const title = formData.get("title")?.toString().trim();
     const category = formData.get("category")?.toString().trim() || null;
@@ -92,7 +92,7 @@ export default async function EditActualitePage({ params }) {
   async function deleteActualite() {
     "use server";
 
-    const supabase = createSupabaseServer();
+    const supabase = await createSupabaseServer();
 
     await supabase.from("actualites").delete().eq("id", actualite.id);
 

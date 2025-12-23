@@ -27,6 +27,7 @@ export default function Navbar() {
     { label: "Accueil", to: "/" },
     { label: "Activités", to: "/activities" },
     { label: "Blog", to: "/blog" },
+    { label: "Actualités", to: "/actualite" },
     { label: "Partenaires", to: "/partenaires" },
     { label: "Les talents", to: "/talents" },
     { label: "Espace bénévoles", to: isLogged ? "/admin" : "/login" },
@@ -39,8 +40,7 @@ export default function Navbar() {
         {/* Mobile dropdown */}
         <div className="dropdown lg:hidden">
           <button tabIndex={0} className="btn btn-ghost">
-           
-            <CiMenuKebab size={30} className="text-[#0432F4]"/>
+            <CiMenuKebab size={30} className="text-[#0432F4]" />
           </button>
 
           <ul

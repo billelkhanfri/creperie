@@ -1,7 +1,7 @@
 import { createSupabaseServer } from "../../lib/supabase/server";
 
 export async function GET(req) {
-  const supabase = createSupabaseServer(); // ✅ serveur only
+  const supabase = await createSupabaseServer(); // ✅ serveur only
 
   const { data } = await supabase.from("actualites").select("*");
   return Response.json(data);
