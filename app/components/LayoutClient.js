@@ -11,7 +11,7 @@ export default function LayoutClient({ children, actualites }) {
   const [open, setOpen] = useState(false);
 
   // 🔥 Paths où la sidebar est cachée
-  const hideSidebarPaths = ["/admin", "/login"];
+  const hideSidebarPaths = ["/admin", "/login", "/nouveau-mot-de-passe"];
 
   const showSidebar = !hideSidebarPaths.some((path) =>
     pathname.startsWith(path)
