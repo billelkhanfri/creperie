@@ -2,7 +2,7 @@ import { createSupabaseServer } from "../../lib/supabase/server";
 import Link from "next/link";
 
 export default async function AdminPostsPage() {
-  const supabase = createSupabaseServer();
+  const supabase = await createSupabaseServer();
 
   const { data: posts, error } = await supabase
     .from("posts")

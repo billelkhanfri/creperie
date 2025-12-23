@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createSupabaseServer } from "../../../lib/supabase/server";
 
 export async function GET(req, context) {
-  const supabase = createSupabaseServer(); // ✅ serveur only
+  const supabase = await  createSupabaseServer(); // ✅ serveur only
 
   // 🔥 params est une Promise dans ta version de Next
   const { slug } = await context.params;
