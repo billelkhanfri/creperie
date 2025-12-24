@@ -18,32 +18,32 @@ export default function NewPostPage() {
       throw new Error("Le titre est obligatoire");
     }
 
-  function slugify(text) {
-    return text
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "") // enlève accents
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)+/g, "");
-  }
+    function slugify(text) {
+      return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") // enlève accents
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)+/g, "");
+    }
 
-  const baseSlug = slugify(title);
-  let slug = baseSlug;
-  let counter = 1;
+    const baseSlug = slugify(title);
+    let slug = baseSlug;
+    let counter = 1;
 
-  // 🔒 évite les doublons
-  while (true) {
-    const { data } = await supabase
-      .from("actualites")
-      .select("id")
-      .eq("slug", slug)
-      .maybeSingle();
+    // 🔒 évite les doublons
+    while (true) {
+      const { data } = await supabase
+        .from("actualites")
+        .select("id")
+        .eq("slug", slug)
+        .maybeSingle();
 
-    if (!data) break;
+      if (!data) break;
 
-    slug = `${baseSlug}-${counter}`;
-    counter++;
-  }
+      slug = `${baseSlug}-${counter}`;
+      counter++;
+    }
     let mainImage = null;
 
     // 🔹 Upload média (image OU vidéo)

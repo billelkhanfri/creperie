@@ -19,8 +19,6 @@ export default function BenevolesDashboardLayout({ children }) {
     <>
       <aside className="w-64 bg-secondary h-screen text-white flex flex-col justify-between">
         <div>
-       
-
           <nav className="p-4 flex flex-col gap-2">
             <Link
               href="/admin"
@@ -49,6 +47,16 @@ export default function BenevolesDashboardLayout({ children }) {
               }`}
             >
               Actualités
+            </Link>
+            <Link
+              href="/admin/evenements"
+              className={`p-2 rounded ${
+                pathname === "/admin/evenements"
+                  ? "bg-primary"
+                  : "hover:bg-neutral"
+              }`}
+            >
+              Evénements
             </Link>
           </nav>
         </div>

@@ -60,18 +60,24 @@ export default async function ActualitesData() {
         <h1 className="text-4xl font-bold text-center mb-8 px-6 py-4 rounded-xl bg-primary/10 text-primary shadow-sm">
           Nos Actualités
         </h1>
-<p className="text-gray-500 text-lg">
-  Découvrez toutes les actions, projets et moments forts de l’association CAAA.
-</p>
+        <p className="text-gray-500 text-lg">
+          Découvrez toutes les actions, projets et moments forts de
+          l’association CAAA.
+        </p>
       </div>
 
       {/* Grid Articles reste inchangé */}
       <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {data.slice(0, 6).map((actu) => (
-          <li key={actu.slug}>
+          <li className="" key={actu.slug}>
             <Link
               href={`/actualite/${actu.slug}`}
-              className="group block rounded-2xl overflow-hidden bg-base-100 shadow-sm hover:shadow-xl transition-all duration-300"
+              className=" group block
+ h-full
+ flex flex-col
+  rounded-2xl overflow-hidden
+  bg-base-100 shadow-sm hover:shadow-xl
+  transition-all duration-300"
             >
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -97,9 +103,12 @@ export default async function ActualitesData() {
                       year: "numeric",
                     })}
                 </p>
-                <span className="mt-auto inline-block text-primary font-medium text-sm group-hover:underline">
-                  Lire la suite →
-                </span>
+                {/* CTA */}
+                <div className="mt-auto flex justify-end">
+                  <span className="text-primary font-medium text-sm group-hover:underline">
+                    Lire la suite →
+                  </span>
+                </div>
               </div>
             </Link>
           </li>

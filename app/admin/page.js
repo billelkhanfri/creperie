@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ResetPassword from "../components/ResetPassword"
 export default  function BenevolesHomePage() {
 
-   const supabase = supabaseClient();
+   const supabase =  supabaseClient();
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("");
 

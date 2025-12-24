@@ -16,7 +16,6 @@ export default function BlogList({ posts = [] }) {
     <section className="bg-base-100 p-6">
       {/* Header */}
       <div className="mb-16 max-w-4xl">
-
         <h1 className="text-4xl font-bold text-center mb-8 px-6 py-4 rounded-xl bg-primary/10 text-primary shadow-sm">
           Nos articles
         </h1>
@@ -41,8 +40,8 @@ export default function BlogList({ posts = [] }) {
                 href={`/blog/${slug}`}
                 className="
   group block
-+ h-full
-+ flex flex-col
+ h-full
+ flex flex-col
   rounded-2xl overflow-hidden
   bg-base-100 shadow-sm hover:shadow-xl
   transition-all duration-300
@@ -77,7 +76,7 @@ export default function BlogList({ posts = [] }) {
                 </div>
 
                 {/* TEXTE */}
-                <div className="p-5 flex flex-col flex-1 gap-2" >
+                <div className="p-5 flex flex-col flex-1 gap-2">
                   <h2 className="text-lg font-semibold leading-snug line-clamp-2">
                     {title}
                   </h2>
