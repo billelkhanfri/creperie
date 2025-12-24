@@ -86,7 +86,7 @@ export default function Navbar() {
       <div className="navbar-end">
         <Link
           href="https://www.helloasso.com/associations/union-diaconale-du-var/formulaires/6?_ga=2.232942622.184921141.1614845505-700122102.1614674721"
-          className="flex items-center gap-2 font-semibold  transition btn btn-warning rounded-lg"
+          className="flex items-center gap-2 font-semibold  transition btn bg-red-500 hover:bg-red-600 text-white rounded-lg"
         >
           <HeartHandshake size={18} />
           Faire un don

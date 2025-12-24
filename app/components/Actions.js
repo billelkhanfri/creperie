@@ -31,7 +31,9 @@ export default function Actions() {
 
   return (
     <section className="py-16 px-6 lg:px-32 bg-white">
-      <h2 className="text-4xl font-bold text-center mb-16">Nos Actions</h2>
+      <h2 className="text-4xl font-bold text-center mb-12 text-primary">
+        Nos Actions
+      </h2>
 
       <div className="grid gap-6 max-w-7xl mx-auto md:grid-cols-[4fr_auto_4fr] items-center">
         {actions.map((action, index) => {
@@ -74,8 +76,8 @@ export default function Actions() {
                       <Image
                         src={action.image}
                         alt={action.title}
-                      width={600}
-                      height={600}
+                        width={600}
+                        height={600}
                         className="object-cover"
                       />
                     </figure>

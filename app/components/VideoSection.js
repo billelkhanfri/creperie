@@ -3,7 +3,7 @@ import React from "react";
 function VideoSection() {
   return (
     <section id="video-section" className="py-16 px-6 lg:px-32 bg-white">
-      <h2 className="text-3xl font-bold text-center mb-8">
+      <h2 className="text-4xl font-bold text-center mb-12 text-primary">
         Découvrez notre association
       </h2>
       <div className="w-full max-w-4xl mx-auto aspect-video">
