@@ -3,7 +3,8 @@ import Navbar from "./components/Navigation";
 import Footer from "./components/Footer";
 import LayoutClient from "./components/LayoutClient";
 import { createSupabaseServer } from "./lib/supabase/server";
-import HeroVideo from "./components/HeroVideo";
+import LayoutContent from "./components/LayoutContent";
+
 
 export const metadata = {
   title: "CAAA — coeur de ville - Toulon",
@@ -24,8 +25,11 @@ export default async function RootLayout({ children }) {
         <header className="border-b border-gray-200 max-w-7xl w-full mx-auto">
           <Navbar />
         </header>
-<HeroVideo/>
-        <LayoutClient actualites={actualites ?? []}>{children}</LayoutClient>
+<LayoutContent></LayoutContent>
+        <LayoutClient actualites={actualites ?? []}>
+         
+          {children}
+          </LayoutClient>
 
         <Footer />
       </body>

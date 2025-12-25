@@ -19,7 +19,7 @@ export default function Hero() {
 
           <div className="flex justify-center lg:justify-start gap-4 flex-wrap">
             <a
-              href="#video-section"
+              href="mailto:caaa.asso@gmail.com"
               className="px-6 py-3 bg-yellow-400 text-blue-900 font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition"
             >
                 Nous contacter
