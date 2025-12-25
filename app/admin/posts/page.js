@@ -14,7 +14,7 @@ export default async function AdminPostsPage() {
   if (error) {
     throw new Error(error.message);
   }
-
+console.log(posts)
   return (
     <div className="p-6">
       {/* HEADER AVEC BOUTON */}

@@ -6,13 +6,13 @@ export default function NewPostPage() {
   async function createPost(formData) {
     "use server";
 
-    const supabase = createSupabaseServer();
+    const supabase = await createSupabaseServer();
 
     // 🔹 Récupération sécurisée des champs
     const title = formData.get("title")?.toString().trim();
     const excerpt = formData.get("excerpt")?.toString().trim() || null;
     const content = formData.get("content")?.toString().trim() || null;
-    const file = formData.get("image");
+    const file = formData.get("file");
 
     if (!title) {
       throw new Error("Le titre est obligatoire");
@@ -34,7 +34,7 @@ export default function NewPostPage() {
     // 🔒 évite les doublons
     while (true) {
       const { data } = await supabase
-        .from("actualites")
+        .from("posts")
         .select("id")
         .eq("slug", slug)
         .maybeSingle();

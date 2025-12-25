@@ -13,10 +13,11 @@ export default function Hero() {
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
             Bienvenue sur <span className="text-yellow-400"><span className="text-blue-400">C</span>AAA</span>
           </h1>
-          <p className="text-lg md:text-xl mb-8 text-gray-100">
-            Le CAAA-Coeur de Ville-UDV est une association de bénévoles, active depuis 49 ans dans le centre-ville de Toulon. Notre mission : l’alphabétisation, l’apprentissage du Français Langue Étrangère et l’accompagnement à la scolarité des enfants du Centre Ancien. Découvrez notre action et rejoignez-nous pour soutenir nos projets.
+          <div className="flex justify-center lg:justify-start">
+                <p className=" text-xl font-light mb-6 text-gray-200 max-w-xl leading-relaxed">
+            Le CAAA-Coeur de Ville-UDV est une association de bénévoles, active depuis 49 ans dans le centre-ville de Toulon.<br></br> Notre mission : l’alphabétisation, l’apprentissage du Français Langue Étrangère et l’accompagnement à la scolarité des enfants du Centre Ancien. Découvrez notre action et rejoignez-nous pour soutenir nos projets.
           </p>
-
+</div>
           <div className="flex justify-center lg:justify-start gap-4 flex-wrap">
             <a
               href="mailto:caaa.asso@gmail.com"
