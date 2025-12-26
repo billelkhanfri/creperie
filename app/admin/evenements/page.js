@@ -6,7 +6,7 @@ export default async function AdminEventsPage() {
 
   const { data: events, error } = await supabase
     .from("evenements")
-    .select("id, title, date, slug")
+    .select("id, title, date")
     .order("date", { ascending: false });
 
   if (error) {
@@ -60,7 +60,7 @@ export default async function AdminEventsPage() {
                 {/* ACTION */}
                 <td>
                   <Link
-                    href={`/admin/evenements/${event.slug}`}
+                    href={`/admin/evenements/${event.id}`}
                     className="btn btn-sm btn-outline btn-primary"
                   >
                     Modifier
