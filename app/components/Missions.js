@@ -5,25 +5,25 @@ const missions = [
   {
     title: "Entraide & Intégration",
     text: "Animer et gérer les initiatives qui favorisent l’entraide et l’intégration.",
-    img: "/assets/integrationwebp.webp",
+    img: "/assets/entraides.jpg",
     newLabel: "",
   },
   {
     title: "Lien social",
     text: "Contribuer au renforcement du lien social et de la citoyenneté.",
-    img: "/assets/lien.webp",
+    img: "/assets/lien.jpg",
     newLabel: "nouveau (example)",
   },
   {
     title: "Formation & Culture",
     text: "Favoriser la formation et le développement culturel des enfants et des adultes.",
-    img: "/assets/formation.webp",
+    img: "/assets/formation.jpg",
     newLabel: "",
   },
   {
     title: "Accompagnement",
     text: "Accompagner les familles dans leurs projets de vie.",
-    img: "/assets/accompagnement.webp",
+    img: "/assets/accompagnement.jpg",
     newLabel: "",
   },
 ];
@@ -55,7 +55,7 @@ function MissionCard({ title, text, img, newLabel }) {
 
 export default function Missions() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-100">
             <h2 className="text-4xl font-bold text-center mb-12 text-primary">
 
      Nos Missions</h2>
