@@ -1,7 +1,5 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { actualiteSchema } from "./actualiteSchema";
+
 
 export default function ActualiteForm({ initialData = {}, action }) {
   const today = new Date().toISOString().split("T")[0];

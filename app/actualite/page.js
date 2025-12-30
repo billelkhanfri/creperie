@@ -1,5 +1,6 @@
 import { createSupabaseServer } from "../lib/supabase/server";
 import ActualitesCarousel from "../components/ActualiteCarousel"; // import client component
+import ActualitesClient  from "../components/ActualitesClient";
 import Link from "next/link";
 export default async function ActualitesData() {
   const supabase = await createSupabaseServer();
@@ -48,7 +49,7 @@ export default async function ActualitesData() {
     return <div>Erreur chargement actualités</div>;
   }
 
-  const data = actualites?.length > 2 ? actualites : mockActualites;
+  const data = actualites?.length > 1 ? actualites : mockActualites;
   const latestImages = data.filter((a) => a.image?.url).slice(0, 4);
 
   return (
@@ -65,55 +66,8 @@ export default async function ActualitesData() {
           l’association CAAA.
         </p>
       </div>
-
-      {/* Grid Articles reste inchangé */}
-      <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {data.slice(0, 6).map((actu) => (
-          <li className="" key={actu.slug}>
-            <Link
-              href={`/actualite/${actu.slug}`}
-              className=" group block
- h-full
- flex flex-col
-  rounded-2xl overflow-hidden
-  bg-base-100 shadow-sm hover:shadow-xl
-  transition-all duration-300"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={actu.image?.url}
-                  alt={actu.image?.alt || actu.title}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                {actu.category && (
-                  <span className="absolute top-3 left-3 badge badge-primary badge-sm">
-                    {actu.category}
-                  </span>
-                )}
-              </div>
-              <div className="p-5 flex flex-col flex-1">
-                <h2 className="text-lg font-semibold leading-snug line-clamp-2">
-                  {actu.title}
-                </h2>
-                <p className="text-sm text-gray-500 mt-2">
-                  {actu.date &&
-                    new Date(actu.date).toLocaleDateString("fr-FR", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                </p>
-                {/* CTA */}
-                <div className="mt-auto flex justify-end">
-                  <span className="text-primary font-medium text-sm group-hover:underline">
-                    Lire la suite →
-                  </span>
-                </div>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+   <ActualitesClient data={data} />
+    
     </section>
   );
 }

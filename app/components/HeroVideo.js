@@ -11,7 +11,7 @@ export default function Hero() {
         {/* Texte */}
         <div className="lg:w-1/2">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Bienvenue sur <span className="text-yellow-400"><span className="text-blue-400">C</span>AAA</span>
+            Bienvenue sur <span className="text-yellow-400"><span className="text-[rgb(0,50,249)]">C</span>AAA</span>
           </h1>
           <div className="flex justify-center lg:justify-start">
                 <p className=" text-xl font-light mb-6 text-gray-200 max-w-xl leading-relaxed">

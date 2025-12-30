@@ -93,7 +93,9 @@ export default function NewPostPage() {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <PostForm action={createPost} />
+    <PostForm createAction={createPost} />
+
+
     </div>
   );
 }
