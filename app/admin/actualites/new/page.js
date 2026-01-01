@@ -1,7 +1,7 @@
 import ActualiteForm from "../../../components/ActualiteForm";
 import { createSupabaseServer } from "../../../lib/supabase/server";
 import { redirect } from "next/navigation";
-
+import Link from "next/link";
 export default function NewActualitePage() {
   async function createActualite(formData) {
     "use server";
@@ -93,6 +93,9 @@ while (true) {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
+         <Link href="/admin/actualites" className="btn btn-ghost mb-8">
+          ← Retour
+        </Link>
       <ActualiteForm action={createActualite} />
     </div>
   );

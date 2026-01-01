@@ -28,7 +28,7 @@ export default function Benevole() {
   const year = now.getFullYear();
 
   return (
-    <section className="py-20 px-6 lg:px-32 bg-gray-50">
+    <section className="py-20 px-6  bg-gray-50">
       <h2 className="text-4xl font-bold text-center mb-12 text-primary">
         Adhérents & Bénévoles
       </h2>

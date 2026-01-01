@@ -30,7 +30,7 @@ export default function Actions() {
   ];
 
   return (
-    <section className="py-16 px-6 lg:px-32 bg-gray-100">
+    <section className="py-16 px-6  bg-gray-100">
       <h2 className="text-4xl font-bold text-center mb-12 text-primary">
         Nos Actions
       </h2>

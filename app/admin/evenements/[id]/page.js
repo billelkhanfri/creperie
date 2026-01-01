@@ -1,6 +1,6 @@
 import { createSupabaseServer } from "../../../lib/supabase/server";
 
-
+import Link from "next/link";
 import { redirect } from "next/navigation";export default async function EditEventPage({ params }) {
   const { id } = await params;
   const supabase = await createSupabaseServer();
@@ -59,20 +59,27 @@ console.log("UPDATED:", data);
   }
 
    return (
-    <div className="max-w-3xl mx-auto space-y-6">
+    <section className="py-16 px-6 "> 
+    <div className="max-w-3xl mx-auto space-y-6 ">
+       <Link href="/admin/evenements" className="btn btn-ghost mb-8">
+          ← Retour
+        </Link>
       {/* Formulaire Update */}
-      <form action={updateEvent} className="space-y-5">
+      <form action={updateEvent} className="card bg-base-100 shadow p-6 space-y-4">
+         <h1 className="text-2xl font-bold">Modifier l’événement </h1>
         <input
           name="title"
           defaultValue={event.title}
           required
           className="input input-bordered w-full"
+          placeholder="titre"
         />
         
         {/* Date */}
         <input
           type="date"
           name="date"
+          placeholder="Date"
           className="input input-bordered w-full"
           defaultValue={
             event.date
@@ -97,5 +104,6 @@ console.log("UPDATED:", data);
         </button>
       </form>
     </div>
+    </section>
   );
 }

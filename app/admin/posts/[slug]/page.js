@@ -1,6 +1,6 @@
 import { createSupabaseServer } from "../../../lib/supabase/server";
 import { redirect } from "next/navigation";
-
+import Link from "next/link";
 export default async function EditPostPage({ params }) {
   const { slug } = await params;
   const supabase = await createSupabaseServer();
@@ -99,8 +99,13 @@ export default async function EditPostPage({ params }) {
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
+       <Link href="/admin/posts" className="btn btn-ghost mb-8">
+          ← Retour
+        </Link>
       {/* Formulaire Update */}
-      <form action={updatePost} className="space-y-5">
+      <form action={updatePost}  className="card bg-base-100 shadow p-6 space-y-4">
+                 <h1 className="text-2xl font-bold">Modifier l’article</h1>
+
         <input
           name="title"
           defaultValue={post.title}

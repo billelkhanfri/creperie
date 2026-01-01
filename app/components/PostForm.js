@@ -32,7 +32,9 @@ export default function PostForm({
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit}  className="card bg-base-100 shadow p-6 space-y-4">
+                 <h1 className="text-2xl font-bold">Article </h1>
+
         <input
           name="title"
           defaultValue={post?.title || ""}
@@ -79,7 +81,7 @@ export default function PostForm({
         />
 
         <button type="submit" className="btn btn-primary w-full">
-          {isEdit ? "Enregistrer" : "Créer le post"}
+          {isEdit ? "Enregistrer" : "Créer"}
         </button>
       </form>
 

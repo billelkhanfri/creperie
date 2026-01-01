@@ -10,12 +10,12 @@ export default function History() {
   ];
 
   return (
-    <section className="py-16 px-6 lg:px-32 bg-base-100">
+    <section className="py-16 px-6  bg-base-100">
       <h2 className="text-4xl font-bold text-center mb-12 text-primary">
         Notre Histoire
       </h2>
 
-      <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-stretch gap-12">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-stretch gap-12">
         {/* Texte à gauche */}
         <div className="lg:w-1/2 flex flex-col justify-center space-y-6">
           {historyTexts.map((text, i) => (

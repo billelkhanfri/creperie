@@ -5,6 +5,8 @@ import Image from "next/image";
 import { HeartHandshake } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CiMenuKebab } from "react-icons/ci";
+import { usePathname } from "next/navigation";
+
 
 import { supabaseClient } from "../lib/supabase/client";
 
@@ -12,6 +14,9 @@ export default function Navbar() {
   const supabase = supabaseClient();
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
+
+
 
   useEffect(() => {
     const checkSession = async () => {
@@ -43,18 +48,28 @@ export default function Navbar() {
             <CiMenuKebab size={30} className="text-[#0432F4]" />
           </button>
 
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[100] mt-3 w-52 p-2 shadow"
-          >
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <Link href={link.to} className=" hover:text-primary transition">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <ul className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[100] mt-3 w-52 p-2 shadow">
+  {navLinks.map((link) => {
+    const isActive = pathname === link.to;
+
+    return (
+      <li key={link.to}>
+        <Link
+          href={link.to}
+          className={`
+            rounded-lg transition
+            ${isActive
+              ? "bg-primary text-white"
+              : "hover:text-primary"}
+          `}
+        >
+          {link.label}
+        </Link>
+      </li>
+    );
+  })}
+</ul>
+
         </div>
 
         {/* Logo */}
@@ -71,15 +86,29 @@ export default function Navbar() {
 
       {/* CENTER : Desktop navigation */}
       <div className="navbar-center hidden lg:flex">
-        <nav className="menu menu-horizontal px-1">
-          {navLinks.map((link) => (
-            <li key={link.to}>
-              <Link href={link.to} className=" hover:text-primary transition">
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </nav>
+       <nav className="menu menu-horizontal px-1">
+  {navLinks.map((link) => {
+    const isActive = pathname === link.to;
+
+    return (
+      <li key={link.to}>
+        <Link
+          href={link.to}
+
+  className={`
+    px-3 py-2
+    ${isActive
+      ? "underline underline-offset-8 decoration-primary decoration-2"
+      : "hover:underline hover:decoration-primary"}
+  `}
+
+        >
+          {link.label}
+        </Link>
+      </li>
+    );
+  })}
+</nav>
       </div>
 
       {/* RIGHT : CTA Contact */}

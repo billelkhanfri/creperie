@@ -1,7 +1,7 @@
 import PostForm from "../../../components/PostForm";
 import { createSupabaseServer } from "../../../lib/supabase/server";
 import { redirect } from "next/navigation";
-
+import Link from "next/link";
 export default function NewPostPage() {
   async function createPost(formData) {
     "use server";
@@ -93,6 +93,9 @@ export default function NewPostPage() {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
+         <Link href="/admin/posts" className="btn btn-ghost mb-8">
+          ← Retour
+        </Link>
     <PostForm createAction={createPost} />
 
 

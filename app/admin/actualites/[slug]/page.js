@@ -1,6 +1,6 @@
 import { createSupabaseServer } from "../../../lib/supabase/server";
 import { redirect } from "next/navigation";
-
+import Link from "next/link";
 export default async function EditActualitePage({ params }) {
   const { slug } = await params;
 
@@ -101,8 +101,11 @@ export default async function EditActualitePage({ params }) {
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
+        <Link href="/admin/actualites" className="btn btn-ghost mb-8">
+          ← Retour
+        </Link>
       {/* FORM UPDATE */}
-      <form action={updateActualite} className="space-y-4">
+      <form action={updateActualite}  className="card bg-base-100 shadow p-6 space-y-4">
         <h1 className="text-2xl font-bold">Modifier l’actualité</h1>
 
         {/* Titre */}
